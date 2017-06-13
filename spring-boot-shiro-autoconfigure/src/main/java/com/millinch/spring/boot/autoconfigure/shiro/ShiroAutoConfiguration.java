@@ -50,6 +50,7 @@ import java.util.Map;
  * @author John Zhang
  */
 @Configuration
+@ConditionalOnProperty(prefix = "shiro", name = "enabled", havingValue = "true")
 @EnableShiroWebSupport
 @ConditionalOnWebApplication
 @Import(ShiroConfiguration.class)
@@ -127,6 +128,7 @@ public class ShiroAutoConfiguration {
     }
 
     @Bean(name = "cacheManager")
+    @ConditionalOnProperty(prefix = "shiro.ehcache", name = "enabled", havingValue = "true")
     @ConditionalOnClass(name = {"org.apache.shiro.cache.ehcache.EhCacheManager"})
     @ConditionalOnMissingBean(name = "cacheManager")
     public CacheManager ehcacheManager() {
@@ -187,7 +189,7 @@ public class ShiroAutoConfiguration {
 
     @Bean(name = "sessionValidationScheduler")
     @DependsOn(value = {"sessionManager"})
-    @ConditionalOnClass(name = {"org.quartz.Scheduler"})
+    @ConditionalOnClass(name = {"org.quartz.Scheduler", "org.apache.shiro.session.mgt.quartz.QuartzSessionValidationScheduler"})
     @ConditionalOnMissingBean(SessionValidationScheduler.class)
     public SessionValidationScheduler quartzSessionValidationScheduler(DefaultWebSessionManager sessionManager) {
         QuartzSessionValidationScheduler quartzSessionValidationScheduler = new QuartzSessionValidationScheduler(sessionManager);

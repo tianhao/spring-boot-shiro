@@ -18,6 +18,8 @@ public class ShiroProperties {
      */
     private Class<? extends Realm> realmClass = null;
 
+    private Boolean enabled;
+
     /**
      * URL of login
      */
@@ -55,6 +57,14 @@ public class ShiroProperties {
     private String filterChainSql;
 
     private final Ehcache ehcache = new Ehcache();
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
+    }
 
     public Class<? extends Realm> getRealmClass() {
         return realmClass;
