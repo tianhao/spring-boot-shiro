@@ -1,4 +1,4 @@
-package com.millinch.spring.boot.autoconfigure.shiro;
+package com.millinch.spring.boot.autoconfigure.shiro.properties;
 
 import org.apache.shiro.session.mgt.eis.JavaUuidSessionIdGenerator;
 import org.apache.shiro.session.mgt.eis.SessionIdGenerator;

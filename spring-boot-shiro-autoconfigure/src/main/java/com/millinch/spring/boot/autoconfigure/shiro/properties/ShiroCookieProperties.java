@@ -1,4 +1,4 @@
-package com.millinch.spring.boot.autoconfigure.shiro;
+package com.millinch.spring.boot.autoconfigure.shiro.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
